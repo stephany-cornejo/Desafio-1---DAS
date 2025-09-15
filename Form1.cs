@@ -16,5 +16,17 @@ namespace DAS_Desafio_1
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // class libros - id, title, año, author
+            // methods - add, delete, update
+
+            // class usuario - id, full name, correo 
+            // methods - add, delete, update
+
+            // class prestamo - id, libro, name, fecha prestamo, fecha devolucion
+            // methods -  
+        }
     }
 }
