@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAS_Desafio_1
 {
-    internal class Class1
+    internal class clsLibros
     {
     }
 }
