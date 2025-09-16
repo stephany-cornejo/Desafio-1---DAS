@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAS_Desafio_1
 {
-    public abstract class clsLibros
+    public class clsLibros
     {
         public int Id { get; set; }
         public string Titulo { get; set; }  

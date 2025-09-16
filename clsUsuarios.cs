@@ -20,8 +20,11 @@ namespace DAS_Desafio_1
 
         public string UltimoError => ultimoError;
 
-        public clsUsuarios()
+        public clsUsuarios(string nom, string correo)
         {
+            FullName = nom;
+            Correo = correo;
+
             DatosCompletos = false;
         }
 

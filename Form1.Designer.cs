@@ -40,9 +40,9 @@
             this.borrowTab = new System.Windows.Forms.TabPage();
             this.statsTab = new System.Windows.Forms.TabPage();
             this.lblUsuarios = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAñadirUsuario = new System.Windows.Forms.Button();
+            this.btnEditarUsuario = new System.Windows.Forms.Button();
+            this.btnEliminarUsuario = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCorreo = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
@@ -135,9 +135,9 @@
             this.usersTab.Controls.Add(this.txtFullName);
             this.usersTab.Controls.Add(this.lblCorreo);
             this.usersTab.Controls.Add(this.label1);
-            this.usersTab.Controls.Add(this.button3);
-            this.usersTab.Controls.Add(this.button2);
-            this.usersTab.Controls.Add(this.button1);
+            this.usersTab.Controls.Add(this.btnEliminarUsuario);
+            this.usersTab.Controls.Add(this.btnEditarUsuario);
+            this.usersTab.Controls.Add(this.btnAñadirUsuario);
             this.usersTab.Controls.Add(this.lblUsuarios);
             this.usersTab.Controls.Add(this.dgvUsuarios);
             this.usersTab.Location = new System.Drawing.Point(4, 22);
@@ -188,32 +188,33 @@
             this.lblUsuarios.TabIndex = 1;
             this.lblUsuarios.Text = "Administrar Usuarios";
             // 
-            // button1
+            // btnAñadirUsuario
             // 
-            this.button1.Location = new System.Drawing.Point(69, 196);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Añadir";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAñadirUsuario.Location = new System.Drawing.Point(69, 196);
+            this.btnAñadirUsuario.Name = "btnAñadirUsuario";
+            this.btnAñadirUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirUsuario.TabIndex = 2;
+            this.btnAñadirUsuario.Text = "Añadir";
+            this.btnAñadirUsuario.UseVisualStyleBackColor = true;
+            this.btnAñadirUsuario.Click += new System.EventHandler(this.btnAñadirUsuario_Click);
             // 
-            // button2
+            // btnEditarUsuario
             // 
-            this.button2.Location = new System.Drawing.Point(69, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEditarUsuario.Location = new System.Drawing.Point(69, 235);
+            this.btnEditarUsuario.Name = "btnEditarUsuario";
+            this.btnEditarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnEditarUsuario.TabIndex = 3;
+            this.btnEditarUsuario.Text = "Editar";
+            this.btnEditarUsuario.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEliminarUsuario
             // 
-            this.button3.Location = new System.Drawing.Point(69, 277);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Eliminar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEliminarUsuario.Location = new System.Drawing.Point(69, 277);
+            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
+            this.btnEliminarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarUsuario.TabIndex = 4;
+            this.btnEliminarUsuario.Text = "Eliminar";
+            this.btnEliminarUsuario.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -281,9 +282,9 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblUsuarios;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEliminarUsuario;
+        private System.Windows.Forms.Button btnEditarUsuario;
+        private System.Windows.Forms.Button btnAñadirUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtFullName;
