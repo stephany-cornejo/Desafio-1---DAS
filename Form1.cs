@@ -28,14 +28,7 @@ namespace DAS_Desafio_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // class libros - id, title, año, author
-            // methods - add, delete, update
 
-            // class usuario - id, full name, correo 
-            // methods - add, delete, update
-
-            // class prestamo - id, libro, name, fecha prestamo, fecha devolucion
-            // methods -  
         }
 
         private void btnAñadirUsuario_Click(object sender, EventArgs e)
@@ -43,7 +36,7 @@ namespace DAS_Desafio_1
             var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
             if (usuario.datosCompletos_aceptados)
             {
-                usuarios.Add(usuario.FullName);
+                usuarios.Add(usuario); // Fix: Add the usuario object, not usuario.FullName
                 ActualizarUsuarios();
             }
             else
@@ -60,6 +53,15 @@ namespace DAS_Desafio_1
             libros.Add(new clsLibros("Delirios", "Laura Restrepo", "2004"));
             libros.Add(new clsLibros("La Fiesta del Chivo", "Mario Vargas LLosa", "2000"));
             libros.Add(new clsLibros("Los Pasos Perdidos", "Alejo Carpentier", "1953"));
+        }
+
+        private void ActualizarUsuarios()
+        {
+            dgvUsuarios.Rows.Clear();
+            foreach (var usuario in usuarios)
+            {
+                dgvUsuarios.Rows.Add(new object[] { usuario.Id, usuario.FullName, usuario.Correo });
+            }
         }
     }
 }
