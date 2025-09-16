@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAS_Desafio_1
 {
-    internal class clsLibros
+    public class clsLibros
     {
+        public int Id { get; set; }
+        public string Titulo { get; set; }  
+        public string Autor { get; set; }
+        public int Anio { get; set; }
+
     }
 }
