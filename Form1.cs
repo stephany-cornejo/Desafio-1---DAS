@@ -58,9 +58,24 @@ namespace DAS_Desafio_1
         private void ActualizarUsuarios()
         {
             dgvUsuarios.Rows.Clear();
+            cmbUsuarios.Items.Clear();
             foreach (var usuario in usuarios)
             {
-                dgvUsuarios.Rows.Add(new object[] { usuario.Id, usuario.FullName, usuario.Correo });
+                dgvUsuarios.Rows.Add(usuario.FullName, usuario.Correo);
+                cmbUsuarios.Items.Add(usuario);
+            }
+            
+        }
+
+        private void ActualizarLibros()
+        {
+            txtTitulo.Clear();
+            txtAutor.Clear();
+            txtAnio.Clear();
+
+            foreach (var libro in libros)
+            {
+                cmbLibro.Items.Add(libro);
             }
         }
     }

@@ -52,7 +52,7 @@
             this.lblAutor = new System.Windows.Forms.Label();
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.lblAnio = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAnio = new System.Windows.Forms.TextBox();
             this.dgvPrestamos = new System.Windows.Forms.DataGridView();
             this.lblPrestamos = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -90,7 +90,7 @@
             // booksTab
             // 
             this.booksTab.BackColor = System.Drawing.Color.White;
-            this.booksTab.Controls.Add(this.textBox1);
+            this.booksTab.Controls.Add(this.txtAnio);
             this.booksTab.Controls.Add(this.lblAnio);
             this.booksTab.Controls.Add(this.txtAutor);
             this.booksTab.Controls.Add(this.lblAutor);
@@ -329,12 +329,12 @@
             this.lblAnio.TabIndex = 9;
             this.lblAnio.Text = "Año";
             // 
-            // textBox1
+            // txtAnio
             // 
-            this.textBox1.Location = new System.Drawing.Point(24, 202);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 20);
-            this.textBox1.TabIndex = 10;
+            this.txtAnio.Location = new System.Drawing.Point(24, 202);
+            this.txtAnio.Name = "txtAnio";
+            this.txtAnio.Size = new System.Drawing.Size(185, 20);
+            this.txtAnio.TabIndex = 10;
             // 
             // dgvPrestamos
             // 
@@ -498,7 +498,7 @@
         private System.Windows.Forms.Label lblAutor;
         private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.Label lblAnio;
         private System.Windows.Forms.DataGridView dgvPrestamos;
         private System.Windows.Forms.Label label3;
