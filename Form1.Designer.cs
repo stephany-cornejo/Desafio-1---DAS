@@ -30,20 +30,28 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.booksTab = new System.Windows.Forms.TabPage();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.lblLibros = new System.Windows.Forms.Label();
             this.usersTab = new System.Windows.Forms.TabPage();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.borrowTab = new System.Windows.Forms.TabPage();
             this.statsTab = new System.Windows.Forms.TabPage();
-            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.lblLibros = new System.Windows.Forms.Label();
-            this.dgvBooks = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.lblUsuarios = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCorreo = new System.Windows.Forms.Label();
+            this.txtFullName = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
             this.usersTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -73,8 +81,64 @@
             this.booksTab.TabIndex = 0;
             this.booksTab.Text = "Libros";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(447, 293);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(321, 293);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "Editar";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(198, 293);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Añadir";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // dgvBooks
+            // 
+            this.dgvBooks.AllowUserToOrderColumns = true;
+            this.dgvBooks.BackgroundColor = System.Drawing.Color.Beige;
+            this.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBooks.Location = new System.Drawing.Point(26, 77);
+            this.dgvBooks.Name = "dgvBooks";
+            this.dgvBooks.Size = new System.Drawing.Size(683, 192);
+            this.dgvBooks.TabIndex = 1;
+            // 
+            // lblLibros
+            // 
+            this.lblLibros.AutoSize = true;
+            this.lblLibros.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLibros.Location = new System.Drawing.Point(279, 26);
+            this.lblLibros.Name = "lblLibros";
+            this.lblLibros.Size = new System.Drawing.Size(152, 23);
+            this.lblLibros.TabIndex = 0;
+            this.lblLibros.Text = "Administrar Libros";
+            // 
             // usersTab
             // 
+            this.usersTab.Controls.Add(this.txtCorreo);
+            this.usersTab.Controls.Add(this.txtFullName);
+            this.usersTab.Controls.Add(this.lblCorreo);
+            this.usersTab.Controls.Add(this.label1);
+            this.usersTab.Controls.Add(this.button3);
+            this.usersTab.Controls.Add(this.button2);
+            this.usersTab.Controls.Add(this.button1);
+            this.usersTab.Controls.Add(this.lblUsuarios);
             this.usersTab.Controls.Add(this.dgvUsuarios);
             this.usersTab.Location = new System.Drawing.Point(4, 22);
             this.usersTab.Name = "usersTab";
@@ -83,6 +147,16 @@
             this.usersTab.TabIndex = 1;
             this.usersTab.Text = "Usuarios";
             this.usersTab.UseVisualStyleBackColor = true;
+            // 
+            // dgvUsuarios
+            // 
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.Beige;
+            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Location = new System.Drawing.Point(237, 66);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.Size = new System.Drawing.Size(522, 234);
+            this.dgvUsuarios.TabIndex = 0;
             // 
             // borrowTab
             // 
@@ -104,69 +178,80 @@
             this.statsTab.Text = "Estadisticas";
             this.statsTab.UseVisualStyleBackColor = true;
             // 
-            // dgvUsuarios
+            // lblUsuarios
             // 
-            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.Beige;
-            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(26, 75);
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(686, 244);
-            this.dgvUsuarios.TabIndex = 0;
+            this.lblUsuarios.AutoSize = true;
+            this.lblUsuarios.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarios.Location = new System.Drawing.Point(284, 21);
+            this.lblUsuarios.Name = "lblUsuarios";
+            this.lblUsuarios.Size = new System.Drawing.Size(173, 23);
+            this.lblUsuarios.TabIndex = 1;
+            this.lblUsuarios.Text = "Administrar Usuarios";
             // 
-            // lblLibros
+            // button1
             // 
-            this.lblLibros.AutoSize = true;
-            this.lblLibros.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLibros.Location = new System.Drawing.Point(301, 24);
-            this.lblLibros.Name = "lblLibros";
-            this.lblLibros.Size = new System.Drawing.Size(152, 23);
-            this.lblLibros.TabIndex = 0;
-            this.lblLibros.Text = "Administrar Libros";
+            this.button1.Location = new System.Drawing.Point(69, 196);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Añadir";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // dgvBooks
+            // button2
             // 
-            this.dgvBooks.AllowUserToOrderColumns = true;
-            this.dgvBooks.BackgroundColor = System.Drawing.Color.Beige;
-            this.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBooks.Location = new System.Drawing.Point(26, 77);
-            this.dgvBooks.Name = "dgvBooks";
-            this.dgvBooks.Size = new System.Drawing.Size(683, 192);
-            this.dgvBooks.TabIndex = 1;
+            this.button2.Location = new System.Drawing.Point(69, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Editar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
+            // button3
             // 
-            this.btnAdd.Location = new System.Drawing.Point(198, 293);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Añadir";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(69, 277);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Eliminar";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnUpdate
+            // label1
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(321, 293);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 3;
-            this.btnUpdate.Text = "Editar";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Nombre Completo";
             // 
-            // btnDelete
+            // lblCorreo
             // 
-            this.btnDelete.Location = new System.Drawing.Point(447, 293);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Eliminar";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Location = new System.Drawing.Point(19, 128);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(38, 13);
+            this.lblCorreo.TabIndex = 6;
+            this.lblCorreo.Text = "Correo";
+            // 
+            // txtFullName
+            // 
+            this.txtFullName.Location = new System.Drawing.Point(22, 95);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(174, 20);
+            this.txtFullName.TabIndex = 7;
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(22, 153);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(174, 20);
+            this.txtCorreo.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 382);
+            this.ClientSize = new System.Drawing.Size(798, 382);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -174,9 +259,10 @@
             this.tabControl1.ResumeLayout(false);
             this.booksTab.ResumeLayout(false);
             this.booksTab.PerformLayout();
-            this.usersTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            this.usersTab.ResumeLayout(false);
+            this.usersTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -194,6 +280,14 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblUsuarios;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.Label lblCorreo;
     }
 }
 

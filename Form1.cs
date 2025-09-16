@@ -12,6 +12,8 @@ namespace DAS_Desafio_1
 {
     public partial class Form1 : Form
     {
+        List<string> usuarios = new List<string>();
+        List<string> libros = new List<string>();
         public Form1()
         {
             InitializeComponent();
