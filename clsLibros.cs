@@ -14,6 +14,8 @@ namespace DAS_Desafio_1
         public string Anio { get; set; }
         public clsUsuarios UsuarioPrestamo { get; private set; }
         public int Prestado { get; private set; }
+        public DateTime FechaPrestamo { get; private set; }
+        public DateTime FechaDevolucion { get; private set; }
 
         private bool DatosCompletos;
 

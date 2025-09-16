@@ -20,7 +20,7 @@ namespace DAS_Desafio_1
             InicializarColumnasUsuarios();
             InicializarColumnasLibros();
             InicializarColumnasPrestamos();
-            CarcarMaterialesIniciales();
+            CargarMaterialesIniciales();
             ActualizarLibros();
             ActualizarUsuarios();
             ActualizarPrestamos();
@@ -77,6 +77,45 @@ namespace DAS_Desafio_1
             {
                 cmbLibro.Items.Add(libro);
             }
+        }
+
+        private void ActualizarPrestamos()
+        {
+            dgvPrestamos.Rows.Clear();
+
+            foreach (var libro in libros)
+            {
+                dgvPrestamos.Rows.Add(libro.Titulo, libro.FechaPrestamo, libro.FechaDevolucion);
+            }
+        }
+
+        private void InicializarColumnasUsuarios()
+        {
+            dgvUsuarios.Columns.Clear();
+            dgvUsuarios.Columns.Add("FullName", "Nombre Completo");
+            dgvUsuarios.Columns.Add("Correo", "Correo Electrónico");
+            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void InicializarColumnasLibros()
+        {
+            dgvLibros.Columns.Clear();
+            dgvLibros.Columns.Add("Titulo", "Título");
+            dgvLibros.Columns.Add("Autor", "Autor");
+            dgvLibros.Columns.Add("Anio", "Año");
+            dgvLibros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLibros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void InicializarColumnasPrestamos()
+        {
+            dgvPrestamos.Columns.Clear();
+            dgvPrestamos.Columns.Add("Titulo", "Título");
+            dgvPrestamos.Columns.Add("FechaPrestamo", "Fecha de Préstamo");
+            dgvPrestamos.Columns.Add("FechaDevolucion", "Fecha de Devolución");
+            dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
     }
 }

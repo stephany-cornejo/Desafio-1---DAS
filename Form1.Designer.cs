@@ -33,7 +33,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.dgvLibros = new System.Windows.Forms.DataGridView();
             this.lblLibros = new System.Windows.Forms.Label();
             this.usersTab = new System.Windows.Forms.TabPage();
             this.txtCorreo = new System.Windows.Forms.TextBox();
@@ -68,7 +68,7 @@
             this.btnEliminarRegistro = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             this.usersTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.borrowTab.SuspendLayout();
@@ -99,7 +99,7 @@
             this.booksTab.Controls.Add(this.btnDelete);
             this.booksTab.Controls.Add(this.btnUpdate);
             this.booksTab.Controls.Add(this.btnAdd);
-            this.booksTab.Controls.Add(this.dgvBooks);
+            this.booksTab.Controls.Add(this.dgvLibros);
             this.booksTab.Controls.Add(this.lblLibros);
             this.booksTab.Location = new System.Drawing.Point(4, 22);
             this.booksTab.Name = "booksTab";
@@ -135,16 +135,16 @@
             this.btnAdd.Text = "Añadir";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // dgvBooks
+            // dgvLibros
             // 
-            this.dgvBooks.AllowUserToOrderColumns = true;
-            this.dgvBooks.BackgroundColor = System.Drawing.Color.Beige;
-            this.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBooks.Location = new System.Drawing.Point(238, 66);
-            this.dgvBooks.Name = "dgvBooks";
-            this.dgvBooks.Size = new System.Drawing.Size(516, 266);
-            this.dgvBooks.TabIndex = 1;
+            this.dgvLibros.AllowUserToOrderColumns = true;
+            this.dgvLibros.BackgroundColor = System.Drawing.Color.Beige;
+            this.dgvLibros.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLibros.Location = new System.Drawing.Point(238, 66);
+            this.dgvLibros.Name = "dgvLibros";
+            this.dgvLibros.Size = new System.Drawing.Size(516, 266);
+            this.dgvLibros.TabIndex = 1;
             // 
             // lblLibros
             // 
@@ -462,7 +462,7 @@
             this.tabControl1.ResumeLayout(false);
             this.booksTab.ResumeLayout(false);
             this.booksTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
             this.usersTab.ResumeLayout(false);
             this.usersTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
@@ -481,7 +481,7 @@
         private System.Windows.Forms.TabPage borrowTab;
         private System.Windows.Forms.TabPage statsTab;
         private System.Windows.Forms.DataGridView dgvUsuarios;
-        private System.Windows.Forms.DataGridView dgvBooks;
+        private System.Windows.Forms.DataGridView dgvLibros;
         private System.Windows.Forms.Label lblLibros;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
