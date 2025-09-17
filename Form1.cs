@@ -70,6 +70,14 @@ namespace DAS_Desafio_1
             libros.Add(new clsLibros("Delirios", "Laura Restrepo", "2004"));
             libros.Add(new clsLibros("La Fiesta del Chivo", "Mario Vargas LLosa", "2000"));
             libros.Add(new clsLibros("Los Pasos Perdidos", "Alejo Carpentier", "1953"));
+            libros.Add(new clsLibros("Romeo y Julieta", "William Shakespeare", "1597"));
+            libros.Add(new clsLibros("Don Quijote de la Mancha", "Miguel de Cervantes", "1605"));
+            libros.Add(new clsLibros("Orgullo y Prejuicio", "Jane Austen", "1813"));
+            libros.Add(new clsLibros("Frankenstein", "Mary Shelley", "1818"));
+            libros.Add(new clsLibros("Los 3 Mosqueteros", "Alexandre Dumas", "1844"));
+            libros.Add(new clsLibros("Cumbres Borrascosas", "Emily Bronte", "1847"));
+            libros.Add(new clsLibros("Jane Eyre", "Charlotte Bronte", "1847"));
+
         }
 
         private void ActualizarUsuarios()
