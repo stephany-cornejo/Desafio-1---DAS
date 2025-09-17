@@ -12,8 +12,8 @@ namespace DAS_Desafio_1
 {
     public partial class Form1 : Form
     {
-        List<clsUsuarios> usuarios = new List<clsUsuarios>();
-        List<clsLibros> libros = new List<clsLibros>();
+        public static List<clsUsuarios> usuarios = new List<clsUsuarios>();
+        public static List<clsLibros> libros = new List<clsLibros>();
         public Form1()
         {
             InitializeComponent();
@@ -31,12 +31,26 @@ namespace DAS_Desafio_1
 
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var libro = new clsLibros(txtTitulo.Text, txtAutor.Text, txtAnio.Text);
+            if (libro.datosCompletos_aceptados)
+            {
+                libros.Add(libro);
+                ActualizarLibros();
+            }
+            else
+            {
+                MessageBox.Show(libro.UltimoError);
+            }
+        }
+
         private void btnAñadirUsuario_Click(object sender, EventArgs e)
         {
             var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
             if (usuario.datosCompletos_aceptados)
             {
-                usuarios.Add(usuario); // Fix: Add the usuario object, not usuario.FullName
+                usuarios.Add(usuario); 
                 ActualizarUsuarios();
             }
             else
@@ -76,6 +90,7 @@ namespace DAS_Desafio_1
             foreach (var libro in libros)
             {
                 cmbLibro.Items.Add(libro);
+                dgvLibros.Rows.Add(libro.Titulo, libro.Autor, libro.Anio);
             }
         }
 
@@ -106,6 +121,7 @@ namespace DAS_Desafio_1
             dgvLibros.Columns.Add("Anio", "Año");
             dgvLibros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLibros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLibros.AllowUserToAddRows = false;
         }
 
         private void InicializarColumnasPrestamos()
@@ -117,5 +133,7 @@ namespace DAS_Desafio_1
             dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+
+       
     }
 }
