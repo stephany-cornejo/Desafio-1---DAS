@@ -154,5 +154,20 @@ namespace DAS_Desafio_1
                 }
             }
         }
+
+        private void dgvLibros_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvLibros.SelectedRows.Count > 0)
+            {
+                string tituloSeleccionado = dgvLibros.SelectedRows[0].Cells["Titulo"].Value.ToString();
+                var libroSeleccionado = libros.FirstOrDefault(l => l.Titulo == tituloSeleccionado);
+                if (libroSeleccionado != null)
+                {
+                    txtTitulo.Text = libroSeleccionado.Titulo;
+                    txtAutor.Text = libroSeleccionado.Autor;
+                    txtAnio.Text = libroSeleccionado.Anio;
+                }
+            }
+        }
     }
 }
