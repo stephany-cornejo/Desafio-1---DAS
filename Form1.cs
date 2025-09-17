@@ -87,6 +87,8 @@ namespace DAS_Desafio_1
             txtAutor.Clear();
             txtAnio.Clear();
 
+            dgvLibros.Rows.Clear();
+
             foreach (var libro in libros)
             {
                 cmbLibro.Items.Add(libro);
@@ -134,6 +136,23 @@ namespace DAS_Desafio_1
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-       
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvLibros.SelectedRows.Count > 0)
+            {
+                string  tituloEliminar = dgvLibros.SelectedRows[0].Cells["Titulo"].Value.ToString();
+                var libroEliminar = libros.FirstOrDefault(l => l.Titulo == tituloEliminar);
+
+                if (libroEliminar != null)
+                {
+                    libros.Remove(libroEliminar);
+                    ActualizarLibros();
+                }
+            else
+                {
+                    MessageBox.Show("Seleccione un libro para eliminar.");
+                }
+            }
+        }
     }
 }
