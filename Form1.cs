@@ -12,11 +12,13 @@ namespace DAS_Desafio_1
 {
     public partial class Form1 : Form
     {
-        List<clsUsuarios> usuarios = new List<clsUsuarios>();
-        List<clsLibros> libros = new List<clsLibros>();
+        public static List<clsUsuarios> usuarios = new List<clsUsuarios>();
+        public static List<clsLibros> libros = new List<clsLibros>();
         public Form1()
         {
             InitializeComponent();
+            cmbLibro.Items.Clear();
+            cmbUsuarios.Items.Clear();
             InicializarColumnasUsuarios();
             InicializarColumnasLibros();
             InicializarColumnasPrestamos();
@@ -24,6 +26,7 @@ namespace DAS_Desafio_1
             ActualizarLibros();
             ActualizarUsuarios();
             ActualizarPrestamos();
+            dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,12 +34,26 @@ namespace DAS_Desafio_1
 
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var libro = new clsLibros(txtTitulo.Text, txtAutor.Text, txtAnio.Text);
+            if (libro.datosCompletos_aceptados)
+            {
+                libros.Add(libro);
+                ActualizarLibros();
+            }
+            else
+            {
+                MessageBox.Show(libro.UltimoError);
+            }
+        }
+
         private void btnAñadirUsuario_Click(object sender, EventArgs e)
         {
             var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
             if (usuario.datosCompletos_aceptados)
             {
-                usuarios.Add(usuario); // Fix: Add the usuario object, not usuario.FullName
+                usuarios.Add(usuario); 
                 ActualizarUsuarios();
             }
             else
@@ -53,6 +70,14 @@ namespace DAS_Desafio_1
             libros.Add(new clsLibros("Delirios", "Laura Restrepo", "2004"));
             libros.Add(new clsLibros("La Fiesta del Chivo", "Mario Vargas LLosa", "2000"));
             libros.Add(new clsLibros("Los Pasos Perdidos", "Alejo Carpentier", "1953"));
+            libros.Add(new clsLibros("Romeo y Julieta", "William Shakespeare", "1597"));
+            libros.Add(new clsLibros("Don Quijote de la Mancha", "Miguel de Cervantes", "1605"));
+            libros.Add(new clsLibros("Orgullo y Prejuicio", "Jane Austen", "1813"));
+            libros.Add(new clsLibros("Frankenstein", "Mary Shelley", "1818"));
+            libros.Add(new clsLibros("Los 3 Mosqueteros", "Alexandre Dumas", "1844"));
+            libros.Add(new clsLibros("Cumbres Borrascosas", "Emily Bronte", "1847"));
+            libros.Add(new clsLibros("Jane Eyre", "Charlotte Bronte", "1847"));
+
         }
 
         private void ActualizarUsuarios()
@@ -73,10 +98,16 @@ namespace DAS_Desafio_1
             txtAutor.Clear();
             txtAnio.Clear();
 
+            dgvLibros.Rows.Clear();
+            cmbLibro.Items.Clear();
+
             foreach (var libro in libros)
             {
                 cmbLibro.Items.Add(libro);
+                dgvLibros.Rows.Add(libro.Titulo, libro.Autor, libro.Anio);
             }
+
+            dgvLibros.ClearSelection();
         }
 
         private void ActualizarPrestamos()
@@ -106,6 +137,7 @@ namespace DAS_Desafio_1
             dgvLibros.Columns.Add("Anio", "Año");
             dgvLibros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvLibros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLibros.AllowUserToAddRows = false;
         }
 
         private void InicializarColumnasPrestamos()
@@ -116,6 +148,68 @@ namespace DAS_Desafio_1
             dgvPrestamos.Columns.Add("FechaDevolucion", "Fecha de Devolución");
             dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvLibros.SelectedRows.Count > 0)
+            {
+                string  tituloEliminar = dgvLibros.SelectedRows[0].Cells["Titulo"].Value.ToString();
+                var libroEliminar = libros.FirstOrDefault(l => l.Titulo == tituloEliminar);
+
+                if (libroEliminar != null)
+                {
+                    libros.Remove(libroEliminar);
+                    ActualizarLibros();
+                }
+            else
+                {
+                    MessageBox.Show("Seleccione un libro para eliminar.");
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvLibros.SelectedRows.Count > 0)
+            {
+                string tituloEditar = dgvLibros.SelectedRows[0].Cells["Titulo"].Value.ToString();
+                var libroEditar = libros.FirstOrDefault(l => l.Titulo == tituloEditar);
+
+                if (libroEditar != null)
+                {
+                    if (libroEditar.ValidarDatos(txtTitulo.Text, txtAutor.Text, txtAnio.Text))
+                    {
+                        ActualizarLibros();
+                    }
+                    else
+                    {
+                        MessageBox.Show(libroEditar.UltimoError);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un libro para editar.");
+            }
+        }
+
+        private void dgvLibros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvLibros.ClearSelection();
+                dgvLibros.Rows[e.RowIndex].Selected = true;
+
+                string tituloEditar = dgvLibros.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
+                var libroEditar = libros.FirstOrDefault(l => l.Titulo == tituloEditar);
+                if (libroEditar != null)
+                {
+                    txtTitulo.Text = libroEditar.Titulo;
+                    txtAutor.Text = libroEditar.Autor;
+                    txtAnio.Text = libroEditar.Anio;
+                }
+            }
         }
     }
 }
