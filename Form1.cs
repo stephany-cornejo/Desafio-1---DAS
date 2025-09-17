@@ -17,6 +17,8 @@ namespace DAS_Desafio_1
         public Form1()
         {
             InitializeComponent();
+            cmbLibro.Items.Clear();
+            cmbUsuarios.Items.Clear();
             InicializarColumnasUsuarios();
             InicializarColumnasLibros();
             InicializarColumnasPrestamos();
@@ -24,7 +26,7 @@ namespace DAS_Desafio_1
             ActualizarLibros();
             ActualizarUsuarios();
             ActualizarPrestamos();
-            dgvLibros.SelectionChanged += dgvLibros_SelectionChanged;
+            dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,12 +91,15 @@ namespace DAS_Desafio_1
             txtAnio.Clear();
 
             dgvLibros.Rows.Clear();
+            cmbLibro.Items.Clear();
 
             foreach (var libro in libros)
             {
                 cmbLibro.Items.Add(libro);
                 dgvLibros.Rows.Add(libro.Titulo, libro.Autor, libro.Anio);
             }
+
+            dgvLibros.ClearSelection();
         }
 
         private void ActualizarPrestamos()
@@ -156,22 +161,6 @@ namespace DAS_Desafio_1
             }
         }
 
-        private void dgvLibros_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvLibros.SelectedRows.Count > 0)
-            {
-                string tituloSeleccionado = dgvLibros.SelectedRows[0].Cells["Titulo"].Value.ToString();
-
-                var libroSeleccionado = libros.FirstOrDefault(l => l.Titulo == tituloSeleccionado);
-                if (libroSeleccionado != null)
-                {
-                    txtTitulo.Text = libroSeleccionado.Titulo;
-                    txtAutor.Text = libroSeleccionado.Autor;
-                    txtAnio.Text = libroSeleccionado.Anio;
-                }
-            }
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvLibros.SelectedRows.Count > 0)
@@ -194,6 +183,24 @@ namespace DAS_Desafio_1
             else
             {
                 MessageBox.Show("Seleccione un libro para editar.");
+            }
+        }
+
+        private void dgvLibros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvLibros.ClearSelection();
+                dgvLibros.Rows[e.RowIndex].Selected = true;
+
+                string tituloEditar = dgvLibros.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
+                var libroEditar = libros.FirstOrDefault(l => l.Titulo == tituloEditar);
+                if (libroEditar != null)
+                {
+                    txtTitulo.Text = libroEditar.Titulo;
+                    txtAutor.Text = libroEditar.Autor;
+                    txtAnio.Text = libroEditar.Anio;
+                }
             }
         }
     }

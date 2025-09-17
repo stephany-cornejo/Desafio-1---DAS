@@ -196,7 +196,7 @@
             this.dgvLibros.Name = "dgvLibros";
             this.dgvLibros.Size = new System.Drawing.Size(516, 266);
             this.dgvLibros.TabIndex = 1;
-            this.dgvLibros.SelectionChanged += new System.EventHandler(this.dgvLibros_SelectionChanged);
+            this.dgvLibros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLibros_CellDoubleClick);
             // 
             // lblLibros
             // 
