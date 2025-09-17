@@ -31,8 +31,6 @@ namespace DAS_Desafio_1
         {
             ValidarDatos(titulo, autor, anio);
             Prestado = 0;
-
-            DatosCompletos = false;
         }
 
         public void AsignarUsuario(clsUsuarios usuario)
