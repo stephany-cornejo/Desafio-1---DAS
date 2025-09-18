@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace DAS_Desafio_1
 {
@@ -44,6 +46,33 @@ namespace DAS_Desafio_1
 
             DatosCompletos = true;
             return true;
+        }
+
+        public void generarListaUsuarios(ref DataGridView dgvUsuarios)
+        {
+            dgvUsuarios.SuspendLayout();
+            dgvUsuarios.Rows.Clear();
+            dgvUsuarios.Columns.Clear();
+
+            //dgvUsuarios.Columns.Add("Id", "Id");
+            dgvUsuarios.Columns.Add("Nombre", "Nombre");
+            dgvUsuarios.Columns.Add("Correo", "Correo");
+
+            dgvUsuarios.ReadOnly = true;
+            dgvUsuarios.AllowUserToAddRows = false;
+            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            foreach (var usuario in Form1.usuarios.OrderBy(u => u.Id))
+            {
+                dgvUsuarios.Rows.Add(usuario.FullName, usuario.Correo);
+            }
+
+            dgvUsuarios.ResumeLayout();
+        }
+
+        public override string ToString()
+        {
+            return FullName;
         }
     }
 }
