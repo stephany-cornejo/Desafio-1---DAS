@@ -503,13 +503,13 @@
             this.chrUsuarios.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chrUsuarios.Legends.Add(legend2);
-            this.chrUsuarios.Location = new System.Drawing.Point(44, 91);
+            this.chrUsuarios.Location = new System.Drawing.Point(6, 91);
             this.chrUsuarios.Name = "chrUsuarios";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chrUsuarios.Series.Add(series2);
-            this.chrUsuarios.Size = new System.Drawing.Size(300, 203);
+            this.chrUsuarios.Size = new System.Drawing.Size(387, 203);
             this.chrUsuarios.TabIndex = 2;
             this.chrUsuarios.Text = "chart1";
             // 
@@ -519,13 +519,13 @@
             this.chrLibros.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chrLibros.Legends.Add(legend1);
-            this.chrLibros.Location = new System.Drawing.Point(432, 91);
+            this.chrLibros.Location = new System.Drawing.Point(399, 91);
             this.chrLibros.Name = "chrLibros";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chrLibros.Series.Add(series1);
-            this.chrLibros.Size = new System.Drawing.Size(312, 203);
+            this.chrLibros.Size = new System.Drawing.Size(363, 203);
             this.chrLibros.TabIndex = 3;
             this.chrLibros.Text = "chart2";
             // 

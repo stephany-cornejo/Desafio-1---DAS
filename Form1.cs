@@ -518,6 +518,7 @@ namespace DAS_Desafio_1
                 .GroupBy(p => p.NombreUsuario)  
                 .Select(g => new { Usuario = g.Key, Cantidad = g.Count() })
                 .OrderByDescending(x => x.Cantidad)
+                .Take(3)
                 .ToList();
 
             chrUsuarios.Series.Clear();
@@ -541,6 +542,7 @@ namespace DAS_Desafio_1
             .GroupBy(p => p.TituloLibro)
             .Select(g => new { Libro = g.Key, Cantidad = g.Count() })
             .OrderByDescending(x => x.Cantidad)
+            .Take(3)
             .ToList();
 
             chrLibros.Series.Clear();
