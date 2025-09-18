@@ -349,6 +349,7 @@
             this.btnEditarRegistro.TabIndex = 11;
             this.btnEditarRegistro.Text = "Editar";
             this.btnEditarRegistro.UseVisualStyleBackColor = true;
+            this.btnEditarRegistro.Click += new System.EventHandler(this.btnEditarRegistro_Click);
             // 
             // btnAñadirRegistro
             // 

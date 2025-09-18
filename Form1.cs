@@ -34,10 +34,7 @@ namespace DAS_Desafio_1
             dgvPrestamos.CellDoubleClick += dgvPrestamos_CellDoubleClick;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        private int indexPresEditar = -1;
 
         private void CargarMaterialesIniciales()
         {
@@ -388,10 +385,12 @@ namespace DAS_Desafio_1
                 {
                     cmbLibro.SelectedItem = libroEditar;
                     cmbUsuarios.SelectedItem = usuarioEditar;
+                    indexPresEditar = e.RowIndex;
                 }
                 else
                 {
                     MessageBox.Show("Selección inválida.");
+                    indexPresEditar = -1;
                 }
             }   
         }
@@ -423,6 +422,11 @@ namespace DAS_Desafio_1
             }
         }
 
+        private void btnEditarRegistro_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
@@ -446,5 +450,7 @@ namespace DAS_Desafio_1
         {
             registrarPrestamo();
         }
+
+     
     }
 }
