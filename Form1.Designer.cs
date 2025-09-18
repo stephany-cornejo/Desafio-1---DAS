@@ -55,10 +55,10 @@
             this.btnEliminarRegistro = new System.Windows.Forms.Button();
             this.btnEditarRegistro = new System.Windows.Forms.Button();
             this.btnAñadirRegistro = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaDevolver = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaPrestado = new System.Windows.Forms.DateTimePicker();
             this.cmbLibro = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
@@ -314,10 +314,10 @@
             this.borrowTab.Controls.Add(this.btnEliminarRegistro);
             this.borrowTab.Controls.Add(this.btnEditarRegistro);
             this.borrowTab.Controls.Add(this.btnAñadirRegistro);
-            this.borrowTab.Controls.Add(this.dateTimePicker2);
+            this.borrowTab.Controls.Add(this.dtpFechaDevolver);
             this.borrowTab.Controls.Add(this.label5);
             this.borrowTab.Controls.Add(this.label4);
-            this.borrowTab.Controls.Add(this.dateTimePicker1);
+            this.borrowTab.Controls.Add(this.dtpFechaPrestado);
             this.borrowTab.Controls.Add(this.cmbLibro);
             this.borrowTab.Controls.Add(this.label3);
             this.borrowTab.Controls.Add(this.cmbUsuarios);
@@ -361,12 +361,12 @@
             this.btnAñadirRegistro.UseVisualStyleBackColor = true;
             this.btnAñadirRegistro.Click += new System.EventHandler(this.btnAñadirRegistro_Click);
             // 
-            // dateTimePicker2
+            // dtpFechaDevolver
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(16, 205);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(194, 20);
-            this.dateTimePicker2.TabIndex = 9;
+            this.dtpFechaDevolver.Location = new System.Drawing.Point(16, 205);
+            this.dtpFechaDevolver.Name = "dtpFechaDevolver";
+            this.dtpFechaDevolver.Size = new System.Drawing.Size(194, 20);
+            this.dtpFechaDevolver.TabIndex = 9;
             // 
             // label5
             // 
@@ -386,12 +386,12 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Fecha Préstamo";
             // 
-            // dateTimePicker1
+            // dtpFechaPrestado
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(16, 155);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(194, 20);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dtpFechaPrestado.Location = new System.Drawing.Point(16, 155);
+            this.dtpFechaPrestado.Name = "dtpFechaPrestado";
+            this.dtpFechaPrestado.Size = new System.Drawing.Size(194, 20);
+            this.dtpFechaPrestado.TabIndex = 6;
             // 
             // cmbLibro
             // 
@@ -466,7 +466,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.booksTab.ResumeLayout(false);
             this.booksTab.PerformLayout();
@@ -514,9 +513,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblPrestamos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaPrestado;
         private System.Windows.Forms.ComboBox cmbLibro;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpFechaDevolver;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnEliminarRegistro;
         private System.Windows.Forms.Button btnEditarRegistro;

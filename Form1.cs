@@ -380,12 +380,25 @@ namespace DAS_Desafio_1
 
                 var libroEditar = libros.FirstOrDefault(l => l.Titulo == tituloEditar);
                 var usuarioEditar = usuarios.FirstOrDefault(u => u.FullName == nombreEditar);
-            
+
+                var registroEditar = prestamos.FirstOrDefault(p =>
+                p.TituloLibro == tituloEditar &&
+                p.NombreUsuario == nombreEditar &&
+                p.FechaPrestamo.ToShortDateString() == fechaPreEditar &&
+                p.FechaDevolucion.ToShortDateString() == fechaDevEditar
+                );
+
                 if (libroEditar != null && usuarioEditar != null)
                 {
                     cmbLibro.SelectedItem = libroEditar;
                     cmbUsuarios.SelectedItem = usuarioEditar;
+                    dtpFechaPrestado.Value = registroEditar.FechaPrestamo;
+                    dtpFechaDevolver.Value = registroEditar.FechaDevolucion;
+
+                    indexPresEditar = prestamos.IndexOf(registroEditar);
+
                     indexPresEditar = e.RowIndex;
+
                 }
                 else
                 {
@@ -424,7 +437,20 @@ namespace DAS_Desafio_1
 
         private void btnEditarRegistro_Click(object sender, EventArgs e)
         {
+            if (indexPresEditar >= 0 && cmbLibro.SelectedItem is clsLibros libro && cmbUsuarios.SelectedItem is clsUsuarios usuario)
+            {
+                prestamos[indexPresEditar].TituloLibro = libro.Titulo;
+                prestamos[indexPresEditar].NombreUsuario = usuario.FullName;
+                prestamos[indexPresEditar].FechaPrestamo = dtpFechaPrestado.Value;
+                prestamos[indexPresEditar].FechaDevolucion = dtpFechaDevolver.Value;
 
+                ActualizarPrestamos();
+                indexPresEditar = -1;
+            }
+            else
+            {
+                MessageBox.Show("Selección inválida.");
+            }
         }
 
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
