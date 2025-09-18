@@ -507,5 +507,52 @@ namespace DAS_Desafio_1
                 MessageBox.Show("Seleccione un registro para eliminar.");
             }
         }
+
+
+        // ESTADISTIICAS
+
+        private void UsuariosActivos()
+        {
+            var usuariosActivos = prestamos
+                .GroupBy(p => p.NombreUsuario)  
+                .Select(g => new { Usuario = g.Key, Cantidad = g.Count() })
+                .OrderByDescending(x => x.Cantidad)
+                .ToList();
+
+            chrUsuarios.Series.Clear();
+
+            var series = new Series("Usuarios más Activos");
+            series.ChartType = SeriesChartType.Bar;
+
+            foreach (var usuario in usuariosActivos)
+            {
+                series.Points.AddXY(usuario.Usuario, usuario.Cantidad);
+            }
+
+            chrUsuarios.Series.Add(series);
+            chrUsuarios.ChartAreas[0].AxisX.Title = "Usuarios";
+
+        }
+
+        private void LibrosPrestados()
+        {
+            var librosMasPres = prestamos
+            .GroupBy(p => p.TituloLibro)
+            .Select(g => new { Libro = g.Key, Cantidad = g.Count() })
+            .OrderByDescending(x => x.Cantidad)
+            .ToList();
+
+            chrLibros.Series.Clear();
+            var series = new Series("Libros Más Prestados");
+            series.ChartType = SeriesChartType.Bar;
+
+            foreach (var libro in librosMasPres)
+            {
+                series.Points.AddXY(libro.Libro, libro.Cantidad);
+            }
+
+            chrLibros.Series.Add(series);   
+            chrLibros.ChartAreas[0].AxisX.Title = "Libros"; 
+        }
     }
 }

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -69,7 +72,10 @@
             this.lblPrestamos = new System.Windows.Forms.Label();
             this.dgvPrestamos = new System.Windows.Forms.DataGridView();
             this.statsTab = new System.Windows.Forms.TabPage();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.chrUsuarios = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chrLibros = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
@@ -77,7 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.borrowTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.statsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chrUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrLibros)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -95,7 +103,6 @@
             // booksTab
             // 
             this.booksTab.BackColor = System.Drawing.Color.White;
-            this.booksTab.Controls.Add(this.chart1);
             this.booksTab.Controls.Add(this.txtAnio);
             this.booksTab.Controls.Add(this.lblAnio);
             this.booksTab.Controls.Add(this.txtAutor);
@@ -458,6 +465,10 @@
             // 
             // statsTab
             // 
+            this.statsTab.Controls.Add(this.chrLibros);
+            this.statsTab.Controls.Add(this.chrUsuarios);
+            this.statsTab.Controls.Add(this.label7);
+            this.statsTab.Controls.Add(this.label6);
             this.statsTab.Location = new System.Drawing.Point(4, 22);
             this.statsTab.Name = "statsTab";
             this.statsTab.Padding = new System.Windows.Forms.Padding(3);
@@ -466,21 +477,57 @@
             this.statsTab.Text = "Estadisticas";
             this.statsTab.UseVisualStyleBackColor = true;
             // 
-            // chart1
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(38, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(247, 33);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Usuarios más Activos";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(451, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(246, 33);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Libros más Prestados";
+            // 
+            // chrUsuarios
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chrUsuarios.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chrUsuarios.Legends.Add(legend2);
+            this.chrUsuarios.Location = new System.Drawing.Point(44, 91);
+            this.chrUsuarios.Name = "chrUsuarios";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chrUsuarios.Series.Add(series2);
+            this.chrUsuarios.Size = new System.Drawing.Size(300, 203);
+            this.chrUsuarios.TabIndex = 2;
+            this.chrUsuarios.Text = "chart1";
+            // 
+            // chrLibros
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.chrLibros.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(284, 32);
-            this.chart1.Name = "chart1";
+            this.chrLibros.Legends.Add(legend1);
+            this.chrLibros.Location = new System.Drawing.Point(432, 91);
+            this.chrLibros.Name = "chrLibros";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 300);
-            this.chart1.TabIndex = 11;
-            this.chart1.Text = "chart1";
+            this.chrLibros.Series.Add(series1);
+            this.chrLibros.Size = new System.Drawing.Size(312, 203);
+            this.chrLibros.TabIndex = 3;
+            this.chrLibros.Text = "chart2";
             // 
             // Form1
             // 
@@ -500,7 +547,10 @@
             this.borrowTab.ResumeLayout(false);
             this.borrowTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.statsTab.ResumeLayout(false);
+            this.statsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chrUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrLibros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -545,7 +595,10 @@
         private System.Windows.Forms.Button btnEliminarRegistro;
         private System.Windows.Forms.Button btnEditarRegistro;
         private System.Windows.Forms.Button btnAñadirRegistro;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrLibros;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrUsuarios;
+        private System.Windows.Forms.Label label7;
     }
 }
 
