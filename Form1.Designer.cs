@@ -358,6 +358,7 @@
             this.btnAñadirRegistro.TabIndex = 10;
             this.btnAñadirRegistro.Text = "Añadir";
             this.btnAñadirRegistro.UseVisualStyleBackColor = true;
+            this.btnAñadirRegistro.Click += new System.EventHandler(this.btnAñadirRegistro_Click);
             // 
             // dateTimePicker2
             // 

@@ -14,11 +14,13 @@ namespace DAS_Desafio_1
     {
         public static List<clsUsuarios> usuarios = new List<clsUsuarios>();
         public static List<clsLibros> libros = new List<clsLibros>();
+        public static List<clsPrestamos> prestamos = new List<clsPrestamos>();
         public Form1()
         {
             InitializeComponent();
             cmbLibro.Items.Clear();
             cmbUsuarios.Items.Clear();
+            registrarPrestamo();
             InicializarColumnasUsuarios();
             InicializarColumnasLibros();
             InicializarColumnasPrestamos();
@@ -34,34 +36,6 @@ namespace DAS_Desafio_1
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            var libro = new clsLibros(txtTitulo.Text, txtAutor.Text, txtAnio.Text);
-            if (libro.datosCompletos_aceptados)
-            {
-                libros.Add(libro);
-                ActualizarLibros();
-            }
-            else
-            {
-                MessageBox.Show(libro.UltimoError);
-            }
-        }
-
-        private void btnAñadirUsuario_Click(object sender, EventArgs e)
-        {
-            var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
-            if (usuario.datosCompletos_aceptados)
-            {
-                usuarios.Add(usuario); 
-                ActualizarUsuarios();
-            }
-            else
-            {
-                MessageBox.Show(usuario.UltimoError);
-            }
         }
 
         private void CargarMaterialesIniciales()
@@ -97,6 +71,57 @@ namespace DAS_Desafio_1
             usuarios.Add(new clsUsuarios("Kimberly Chacón", "chaconchacon@gmail.com"));
             usuarios.Add(new clsUsuarios("Katerin Gonzalez", "rosesarered@gmail.com"));
             usuarios.Add(new clsUsuarios("Kevin Trujillo", "trujillo3kevin@gmail.com"));
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var libro = new clsLibros(txtTitulo.Text, txtAutor.Text, txtAnio.Text);
+            if (libro.datosCompletos_aceptados)
+            {
+                libros.Add(libro);
+                ActualizarLibros();
+            }
+            else
+            {
+                MessageBox.Show(libro.UltimoError);
+            }
+        }
+
+        private void btnAñadirUsuario_Click(object sender, EventArgs e)
+        {
+            var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
+            if (usuario.datosCompletos_aceptados)
+            {
+                usuarios.Add(usuario);
+                ActualizarUsuarios();
+            }
+            else
+            {
+                MessageBox.Show(usuario.UltimoError);
+            }
+        }
+
+        private void registrarPrestamo() { 
+            if (cmbUsuarios.SelectedItem is clsUsuarios usuario && cmbLibro.SelectedItem is clsLibros libro)
+            {
+                var nuevoPrestamo = new clsPrestamos
+                    (
+                        libro.Titulo,
+                        usuario.FullName,
+                        DateTime.Now,
+                        DateTime.Now.AddDays(14)
+                    );
+                prestamos.Add(nuevoPrestamo);
+
+                libro.UsuarioPrestamo = usuario;
+                libro.Prestado += 1;
+
+                ActualizarPrestamos();
+
+            }
+            else             {
+                MessageBox.Show("Seleccione un usuario y un libro para registrar el préstamo.");
+            }
         }
 
         private void ActualizarUsuarios()
@@ -137,11 +162,9 @@ namespace DAS_Desafio_1
         {
             dgvPrestamos.Rows.Clear();
 
-            foreach (var libro in libros)
+            foreach (var prestamo in prestamos)
             {
-                string usuarioNombre = libro.UsuarioPrestamo?.FullName ?? "N/A";
-
-                dgvPrestamos.Rows.Add(libro.Titulo, usuarioNombre, libro.FechaPrestamo, libro.FechaDevolucion);
+                dgvPrestamos.Rows.Add(prestamo.TituloLibro, prestamo.NombreUsuario, prestamo.FechaPrestamo.ToShortDateString(), prestamo.FechaDevolucion.ToShortDateString());
             }
         }
 
@@ -175,6 +198,7 @@ namespace DAS_Desafio_1
             dgvPrestamos.Columns.Add("FechaDevolucion", "Fecha de Devolución");
             dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLibros.AllowUserToAddRows = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -298,6 +322,11 @@ namespace DAS_Desafio_1
                     MessageBox.Show("Seleccione un usuario para eliminar.");
                 }
             }
+        }
+
+        private void btnAñadirRegistro_Click(object sender, EventArgs e)
+        {
+            registrarPrestamo();
         }
     }
 }
