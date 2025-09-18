@@ -28,6 +28,7 @@ namespace DAS_Desafio_1
             ActualizarUsuarios();
             ActualizarPrestamos();
             dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
+            dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -100,6 +101,9 @@ namespace DAS_Desafio_1
 
         private void ActualizarUsuarios()
         {
+            txtFullName.Clear();
+            txtCorreo.Clear();
+
             dgvUsuarios.Rows.Clear();
             cmbUsuarios.Items.Clear();
             foreach (var usuario in usuarios)
@@ -108,6 +112,7 @@ namespace DAS_Desafio_1
                 cmbUsuarios.Items.Add(usuario);
             }
             
+            dgvUsuarios.ClearSelection();
         }
 
         private void ActualizarLibros()
@@ -147,7 +152,7 @@ namespace DAS_Desafio_1
             dgvUsuarios.Columns.Add("Correo", "Correo Electrónico");
             dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLibros.AllowUserToAddRows = false;
+            dgvUsuarios.AllowUserToAddRows = false;
         }
 
         private void InicializarColumnasLibros()
