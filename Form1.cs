@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DAS_Desafio_1
 {
@@ -32,6 +33,7 @@ namespace DAS_Desafio_1
             dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
             dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
             dgvPrestamos.CellDoubleClick += dgvPrestamos_CellDoubleClick;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
         }
 
         private int indexPresEditar = -1;
@@ -504,6 +506,92 @@ namespace DAS_Desafio_1
             else
             {
                 MessageBox.Show("Seleccione un registro para eliminar.");
+            }
+        }
+
+
+        // ESTADISTIICAS
+
+        private void UsuariosActivos()
+        {
+            var usuariosActivos = prestamos
+                .GroupBy(p => p.NombreUsuario)  
+                .Select(g => new { Usuario = g.Key, Cantidad = g.Count() })
+                .OrderByDescending(x => x.Cantidad)
+                .Take(3)
+                .ToList();
+
+            chrUsuarios.Series.Clear();
+            chrUsuarios.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+            chrUsuarios.ChartAreas[0].AxisX.Interval = 1;
+            chrUsuarios.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chrUsuarios.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+            chrUsuarios.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrUsuarios.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrUsuarios.ChartAreas[0].BackColor = Color.WhiteSmoke;
+            chrUsuarios.Legends.Clear();
+
+            var series = new Series("Usuarios más Activos");
+            series.ChartType = SeriesChartType.Bar;
+
+            foreach (var usuario in usuariosActivos)
+            {
+                series.Points.AddXY(usuario.Usuario, usuario.Cantidad);
+            }
+
+            chrUsuarios.Series.Add(series);
+            chrUsuarios.ChartAreas[0].AxisX.Title = "Usuarios";
+
+        }
+
+        private void LibrosPrestados()
+        {
+            var librosMasPres = prestamos
+            .GroupBy(p => p.TituloLibro)
+            .Select(g => new { Libro = g.Key, Cantidad = g.Count() })
+            .OrderByDescending(x => x.Cantidad)
+            .Take(3)
+            .ToList();
+
+            chrLibros.Series.Clear();
+
+            chrLibros.BackColor = Color.Transparent;
+            chrLibros.ChartAreas[0].BackColor = Color.Transparent;
+            chrLibros.ChartAreas[0].BackSecondaryColor = Color.Transparent;
+            chrLibros.ChartAreas[0].BorderColor = Color.Transparent;
+
+            chrLibros.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+            chrLibros.ChartAreas[0].AxisX.Interval = 1;
+            chrLibros.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chrLibros.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+            chrLibros.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrLibros.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrLibros.ChartAreas[0].BackColor = Color.WhiteSmoke;
+            chrLibros.Legends.Clear();
+
+            
+
+            var series = new Series("Libros Más Prestados");
+            series.ChartType = SeriesChartType.Bar;
+
+            series.BorderWidth = 0;
+            series.BorderColor = Color.Transparent;
+
+            foreach (var libro in librosMasPres)
+            {
+                series.Points.AddXY(libro.Libro, libro.Cantidad);
+            }
+
+            chrLibros.Series.Add(series);   
+            chrLibros.ChartAreas[0].AxisX.Title = "Libros"; 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == statsTab)
+            {
+                UsuariosActivos();
+                LibrosPrestados();
             }
         }
     }
