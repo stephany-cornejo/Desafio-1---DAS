@@ -134,7 +134,9 @@ namespace DAS_Desafio_1
 
             foreach (var libro in libros)
             {
-                dgvPrestamos.Rows.Add(libro.Titulo, libro.FechaPrestamo, libro.FechaDevolucion);
+                string usuarioNombre = libro.UsuarioPrestamo?.FullName ?? "N/A";
+
+                dgvPrestamos.Rows.Add(libro.Titulo, usuarioNombre, libro.FechaPrestamo, libro.FechaDevolucion);
             }
         }
 
@@ -145,6 +147,7 @@ namespace DAS_Desafio_1
             dgvUsuarios.Columns.Add("Correo", "Correo Electrónico");
             dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLibros.AllowUserToAddRows = false;
         }
 
         private void InicializarColumnasLibros()
@@ -162,6 +165,7 @@ namespace DAS_Desafio_1
         {
             dgvPrestamos.Columns.Clear();
             dgvPrestamos.Columns.Add("Titulo", "Título");
+            dgvPrestamos.Columns.Add("Usuario", "Usuario");
             dgvPrestamos.Columns.Add("FechaPrestamo", "Fecha de Préstamo");
             dgvPrestamos.Columns.Add("FechaDevolucion", "Fecha de Devolución");
             dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

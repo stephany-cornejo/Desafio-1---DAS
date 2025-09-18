@@ -14,7 +14,7 @@ namespace DAS_Desafio_1
         public string Titulo { get; set; }
         public string Autor { get; set; }
         public string Anio { get; set; }
-        public clsUsuarios UsuarioPrestamo { get; private set; }
+        public clsUsuarios UsuarioPrestamo { get; set; }
         public int Prestado { get; private set; }
         public DateTime FechaPrestamo { get; private set; }
         public DateTime FechaDevolucion { get; private set; }
@@ -31,11 +31,12 @@ namespace DAS_Desafio_1
         {
             ValidarDatos(titulo, autor, anio);
             Prestado = 0;
+            UsuarioPrestamo = null;
         }
 
         public void AsignarUsuario(clsUsuarios usuario)
         {
-
+            UsuarioPrestamo = usuario;
         }
 
         public bool ValidarDatos(string titulo, string autor, string anio)
