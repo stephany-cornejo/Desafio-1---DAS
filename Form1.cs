@@ -20,7 +20,6 @@ namespace DAS_Desafio_1
             InitializeComponent();
             cmbLibro.Items.Clear();
             cmbUsuarios.Items.Clear();
-            registrarPrestamo();
             InicializarColumnasUsuarios();
             InicializarColumnasLibros();
             InicializarColumnasPrestamos();
@@ -368,6 +367,8 @@ namespace DAS_Desafio_1
                 }
             }
         }
+
+
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
