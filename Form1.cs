@@ -187,28 +187,6 @@ namespace DAS_Desafio_1
             }
         }
 
-        private void registrarPrestamo() { 
-            if (cmbUsuarios.SelectedItem is clsUsuarios usuario && cmbLibro.SelectedItem is clsLibros libro)
-            {
-                var nuevoPrestamo = new clsPrestamos
-                    (
-                        libro.Titulo,
-                        usuario.FullName,
-                        DateTime.Now,
-                        DateTime.Now.AddDays(14)
-                    );
-                prestamos.Add(nuevoPrestamo);
-
-                libro.UsuarioPrestamo = usuario;
-                libro.Prestado += 1;
-
-                ActualizarPrestamos();
-
-            }
-            else             {
-                MessageBox.Show("Seleccione un usuario y un libro para registrar el préstamo.");
-            }
-        }
 
         private void ActualizarUsuarios()
         {
@@ -474,9 +452,32 @@ namespace DAS_Desafio_1
 
         private void btnAñadirRegistro_Click(object sender, EventArgs e)
         {
-            registrarPrestamo();
+            if (cmbUsuarios.SelectedItem is clsUsuarios usuario && cmbLibro.SelectedItem is clsLibros libro )
+            {
+                var nuevoPrestamo = new clsPrestamos
+                    (
+                        libro.Titulo,
+                        usuario.FullName,
+                        dtpFechaPrestado.Value,
+                        dtpFechaDevolver.Value  
+                    );
+                prestamos.Add(nuevoPrestamo);
+
+                libro.UsuarioPrestamo = usuario;
+                libro.Prestado += 1;
+
+                ActualizarPrestamos();
+
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario y un libro para registrar el préstamo.");
+            }
         }
 
-     
+        private void btnEliminarRegistro_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -340,6 +340,7 @@
             this.btnEliminarRegistro.TabIndex = 12;
             this.btnEliminarRegistro.Text = "Eliminar";
             this.btnEliminarRegistro.UseVisualStyleBackColor = true;
+            this.btnEliminarRegistro.Click += new System.EventHandler(this.btnEliminarRegistro_Click);
             // 
             // btnEditarRegistro
             // 
