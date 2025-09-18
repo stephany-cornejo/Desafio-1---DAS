@@ -23,6 +23,7 @@ namespace DAS_Desafio_1
             InicializarColumnasLibros();
             InicializarColumnasPrestamos();
             CargarMaterialesIniciales();
+            CargarUsuariosIniciales();
             ActualizarLibros();
             ActualizarUsuarios();
             ActualizarPrestamos();
@@ -77,6 +78,13 @@ namespace DAS_Desafio_1
             libros.Add(new clsLibros("Los 3 Mosqueteros", "Alexandre Dumas", "1844"));
             libros.Add(new clsLibros("Cumbres Borrascosas", "Emily Bronte", "1847"));
             libros.Add(new clsLibros("Jane Eyre", "Charlotte Bronte", "1847"));
+
+        }
+
+        private void CargarUsuariosIniciales()
+        {
+            usuarios.Add(new clsUsuarios("Ana García", "anagarcia78@gmail.com"));
+           
 
         }
 
