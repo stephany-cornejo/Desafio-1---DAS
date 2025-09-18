@@ -26,6 +26,7 @@ namespace DAS_Desafio_1
             InicializarColumnasPrestamos();
             CargarMaterialesIniciales();
             CargarUsuariosIniciales();
+            CargarPrestamosIniciales();
             ActualizarLibros();
             ActualizarUsuarios();
             ActualizarPrestamos();
@@ -71,6 +72,94 @@ namespace DAS_Desafio_1
             usuarios.Add(new clsUsuarios("Kimberly Chacón", "chaconchacon@gmail.com"));
             usuarios.Add(new clsUsuarios("Katerin Gonzalez", "rosesarered@gmail.com"));
             usuarios.Add(new clsUsuarios("Kevin Trujillo", "trujillo3kevin@gmail.com"));
+        }
+
+        private void CargarPrestamosIniciales()
+        {
+            prestamos.Add(new clsPrestamos(
+                libros[0].Titulo,
+                usuarios[7].FullName,
+                DateTime.Now.AddDays(-10),
+                DateTime.Now.AddDays(-4)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[5].Titulo,
+                usuarios[3].FullName,
+                DateTime.Now.AddDays(-70),
+                DateTime.Now.AddDays(-64)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[7].Titulo,
+                usuarios[3].FullName,
+                DateTime.Now.AddDays(-15),
+                DateTime.Now.AddDays(-2)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[10].Titulo,
+                usuarios[2].FullName,
+                DateTime.Now.AddDays(-101),
+                DateTime.Now.AddDays(-95)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[0].Titulo,
+                usuarios[5].FullName,
+                DateTime.Now.AddDays(-56),
+                DateTime.Now.AddDays(-43)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[2].Titulo,
+                usuarios[11].FullName,
+                DateTime.Now.AddDays(-67),
+                DateTime.Now.AddDays(-60)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[6].Titulo,
+                usuarios[5].FullName,
+                DateTime.Now.AddDays(-19),
+                DateTime.Now.AddDays(-11)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[8].Titulo,
+                usuarios[3].FullName,
+                DateTime.Now.AddDays(-45),
+                DateTime.Now.AddDays(-40)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[3].Titulo,
+                usuarios[9].FullName,
+                DateTime.Now.AddDays(-23),
+                DateTime.Now.AddDays(-14)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[6].Titulo,
+                usuarios[10].FullName,
+                DateTime.Now.AddDays(-7),
+                DateTime.Now.AddDays(4)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[9].Titulo,
+                usuarios[5].FullName,
+                DateTime.Now.AddDays(-26),
+                DateTime.Now.AddDays(-16)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[11].Titulo,
+                usuarios[8].FullName,
+                DateTime.Now.AddDays(-9),
+                DateTime.Now.AddDays(4)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[3].Titulo,
+                usuarios[4].FullName,
+                DateTime.Now,
+                DateTime.Now.AddDays(7)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[6].Titulo,
+                usuarios[7].FullName,
+                DateTime.Now,
+                DateTime.Now.AddDays(8)
+                ));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
