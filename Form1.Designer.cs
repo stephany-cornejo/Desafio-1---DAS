@@ -444,6 +444,7 @@
             this.dgvPrestamos.BackgroundColor = System.Drawing.Color.Beige;
             this.dgvPrestamos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrestamos.EnableHeadersVisualStyles = false;
             this.dgvPrestamos.Location = new System.Drawing.Point(228, 63);
             this.dgvPrestamos.Name = "dgvPrestamos";
             this.dgvPrestamos.Size = new System.Drawing.Size(528, 258);

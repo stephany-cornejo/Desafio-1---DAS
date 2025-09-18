@@ -187,6 +187,31 @@ namespace DAS_Desafio_1
             }
         }
 
+        private void btnAñadirRegistro_Click(object sender, EventArgs e)
+        {
+            if (cmbUsuarios.SelectedItem is clsUsuarios usuario && cmbLibro.SelectedItem is clsLibros libro)
+            {
+                var nuevoPrestamo = new clsPrestamos
+                    (
+                        libro.Titulo,
+                        usuario.FullName,
+                        dtpFechaPrestado.Value,
+                        dtpFechaDevolver.Value
+                    );
+                prestamos.Add(nuevoPrestamo);
+
+                libro.UsuarioPrestamo = usuario;
+                libro.Prestado += 1;
+
+                ActualizarPrestamos();
+
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario y un libro para registrar el préstamo.");
+            }
+        }
+
 
         private void ActualizarUsuarios()
         {
@@ -450,34 +475,36 @@ namespace DAS_Desafio_1
             }
         }
 
-        private void btnAñadirRegistro_Click(object sender, EventArgs e)
+        private void btnEliminarRegistro_Click(object sender, EventArgs e)
         {
-            if (cmbUsuarios.SelectedItem is clsUsuarios usuario && cmbLibro.SelectedItem is clsLibros libro )
+            if (dgvPrestamos.SelectedRows.Count > 0)
             {
-                var nuevoPrestamo = new clsPrestamos
-                    (
-                        libro.Titulo,
-                        usuario.FullName,
-                        dtpFechaPrestado.Value,
-                        dtpFechaDevolver.Value  
-                    );
-                prestamos.Add(nuevoPrestamo);
+                string titulo = dgvPrestamos.SelectedRows[0].Cells["Titulo"].Value.ToString();
+                string usuario = dgvPrestamos.SelectedRows[0].Cells["Usuario"].Value.ToString();
+                string fechaPrestamo = dgvPrestamos.SelectedRows[0].Cells["FechaPrestamo"].Value.ToString();
+                string fechaDevolucion = dgvPrestamos.SelectedRows[0].Cells["FechaDevolucion"].Value.ToString();
 
-                libro.UsuarioPrestamo = usuario;
-                libro.Prestado += 1;
+                var registroEliminar = prestamos.FirstOrDefault(p =>
+                    p.TituloLibro == titulo &&
+                    p.NombreUsuario == usuario &&
+                    p.FechaPrestamo.ToShortDateString() == fechaPrestamo &&
+                    p.FechaDevolucion.ToShortDateString() == fechaDevolucion
+                );
 
-                ActualizarPrestamos();
-
+                if (registroEliminar != null)
+                {
+                    prestamos.Remove(registroEliminar);
+                    ActualizarPrestamos();
+                }
+                else
+                {
+                    MessageBox.Show("Registro inválido");
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione un usuario y un libro para registrar el préstamo.");
+                MessageBox.Show("Seleccione un registro para eliminar.");
             }
-        }
-
-        private void btnEliminarRegistro_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
