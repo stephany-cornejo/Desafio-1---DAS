@@ -33,6 +33,7 @@ namespace DAS_Desafio_1
             dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
             dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
             dgvPrestamos.CellDoubleClick += dgvPrestamos_CellDoubleClick;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
         }
 
         private int indexPresEditar = -1;
@@ -553,6 +554,15 @@ namespace DAS_Desafio_1
 
             chrLibros.Series.Add(series);   
             chrLibros.ChartAreas[0].AxisX.Title = "Libros"; 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == statsTab)
+            {
+                UsuariosActivos();
+                LibrosPrestados();
+            }
         }
     }
 }
