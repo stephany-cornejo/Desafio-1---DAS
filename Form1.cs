@@ -522,6 +522,14 @@ namespace DAS_Desafio_1
                 .ToList();
 
             chrUsuarios.Series.Clear();
+            chrUsuarios.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+            chrUsuarios.ChartAreas[0].AxisX.Interval = 1;
+            chrUsuarios.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chrUsuarios.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+            chrUsuarios.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrUsuarios.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrUsuarios.ChartAreas[0].BackColor = Color.WhiteSmoke;
+            chrUsuarios.Legends.Clear();
 
             var series = new Series("Usuarios más Activos");
             series.ChartType = SeriesChartType.Bar;
@@ -546,8 +554,28 @@ namespace DAS_Desafio_1
             .ToList();
 
             chrLibros.Series.Clear();
+
+            chrLibros.BackColor = Color.Transparent;
+            chrLibros.ChartAreas[0].BackColor = Color.Transparent;
+            chrLibros.ChartAreas[0].BackSecondaryColor = Color.Transparent;
+            chrLibros.ChartAreas[0].BorderColor = Color.Transparent;
+
+            chrLibros.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+            chrLibros.ChartAreas[0].AxisX.Interval = 1;
+            chrLibros.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chrLibros.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dot;
+            chrLibros.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrLibros.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            chrLibros.ChartAreas[0].BackColor = Color.WhiteSmoke;
+            chrLibros.Legends.Clear();
+
+            
+
             var series = new Series("Libros Más Prestados");
             series.ChartType = SeriesChartType.Bar;
+
+            series.BorderWidth = 0;
+            series.BorderColor = Color.Transparent;
 
             foreach (var libro in librosMasPres)
             {
