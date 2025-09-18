@@ -14,6 +14,7 @@ namespace DAS_Desafio_1
     {
         public static List<clsUsuarios> usuarios = new List<clsUsuarios>();
         public static List<clsLibros> libros = new List<clsLibros>();
+        public static List<clsPrestamos> prestamos = new List<clsPrestamos>();
         public Form1()
         {
             InitializeComponent();
@@ -24,45 +25,16 @@ namespace DAS_Desafio_1
             InicializarColumnasPrestamos();
             CargarMaterialesIniciales();
             CargarUsuariosIniciales();
+            CargarPrestamosIniciales();
             ActualizarLibros();
             ActualizarUsuarios();
             ActualizarPrestamos();
             dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
             dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
+            dgvPrestamos.CellDoubleClick += dgvPrestamos_CellDoubleClick;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            var libro = new clsLibros(txtTitulo.Text, txtAutor.Text, txtAnio.Text);
-            if (libro.datosCompletos_aceptados)
-            {
-                libros.Add(libro);
-                ActualizarLibros();
-            }
-            else
-            {
-                MessageBox.Show(libro.UltimoError);
-            }
-        }
-
-        private void btnAñadirUsuario_Click(object sender, EventArgs e)
-        {
-            var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
-            if (usuario.datosCompletos_aceptados)
-            {
-                usuarios.Add(usuario); 
-                ActualizarUsuarios();
-            }
-            else
-            {
-                MessageBox.Show(usuario.UltimoError);
-            }
-        }
+        private int indexPresEditar = -1;
 
         private void CargarMaterialesIniciales()
         {
@@ -98,6 +70,148 @@ namespace DAS_Desafio_1
             usuarios.Add(new clsUsuarios("Katerin Gonzalez", "rosesarered@gmail.com"));
             usuarios.Add(new clsUsuarios("Kevin Trujillo", "trujillo3kevin@gmail.com"));
         }
+
+        private void CargarPrestamosIniciales()
+        {
+            prestamos.Add(new clsPrestamos(
+                libros[0].Titulo,
+                usuarios[7].FullName,
+                DateTime.Now.AddDays(-10),
+                DateTime.Now.AddDays(-4)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[5].Titulo,
+                usuarios[3].FullName,
+                DateTime.Now.AddDays(-70),
+                DateTime.Now.AddDays(-64)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[7].Titulo,
+                usuarios[3].FullName,
+                DateTime.Now.AddDays(-15),
+                DateTime.Now.AddDays(-2)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[10].Titulo,
+                usuarios[2].FullName,
+                DateTime.Now.AddDays(-101),
+                DateTime.Now.AddDays(-95)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[0].Titulo,
+                usuarios[5].FullName,
+                DateTime.Now.AddDays(-56),
+                DateTime.Now.AddDays(-43)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[2].Titulo,
+                usuarios[11].FullName,
+                DateTime.Now.AddDays(-67),
+                DateTime.Now.AddDays(-60)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[6].Titulo,
+                usuarios[5].FullName,
+                DateTime.Now.AddDays(-19),
+                DateTime.Now.AddDays(-11)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[8].Titulo,
+                usuarios[3].FullName,
+                DateTime.Now.AddDays(-45),
+                DateTime.Now.AddDays(-40)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[3].Titulo,
+                usuarios[9].FullName,
+                DateTime.Now.AddDays(-23),
+                DateTime.Now.AddDays(-14)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[6].Titulo,
+                usuarios[10].FullName,
+                DateTime.Now.AddDays(-7),
+                DateTime.Now.AddDays(4)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[9].Titulo,
+                usuarios[5].FullName,
+                DateTime.Now.AddDays(-26),
+                DateTime.Now.AddDays(-16)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[11].Titulo,
+                usuarios[8].FullName,
+                DateTime.Now.AddDays(-9),
+                DateTime.Now.AddDays(4)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[3].Titulo,
+                usuarios[4].FullName,
+                DateTime.Now,
+                DateTime.Now.AddDays(7)
+                ));
+            prestamos.Add(new clsPrestamos(
+                libros[6].Titulo,
+                usuarios[7].FullName,
+                DateTime.Now,
+                DateTime.Now.AddDays(8)
+                ));
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var libro = new clsLibros(txtTitulo.Text, txtAutor.Text, txtAnio.Text);
+            if (libro.datosCompletos_aceptados)
+            {
+                libros.Add(libro);
+                ActualizarLibros();
+            }
+            else
+            {
+                MessageBox.Show(libro.UltimoError);
+            }
+        }
+
+        private void btnAñadirUsuario_Click(object sender, EventArgs e)
+        {
+            var usuario = new clsUsuarios(txtFullName.Text, txtCorreo.Text);
+            if (usuario.datosCompletos_aceptados)
+            {
+                usuarios.Add(usuario);
+                ActualizarUsuarios();
+            }
+            else
+            {
+                MessageBox.Show(usuario.UltimoError);
+            }
+        }
+
+        private void btnAñadirRegistro_Click(object sender, EventArgs e)
+        {
+            if (cmbUsuarios.SelectedItem is clsUsuarios usuario && cmbLibro.SelectedItem is clsLibros libro)
+            {
+                var nuevoPrestamo = new clsPrestamos
+                    (
+                        libro.Titulo,
+                        usuario.FullName,
+                        dtpFechaPrestado.Value,
+                        dtpFechaDevolver.Value
+                    );
+                prestamos.Add(nuevoPrestamo);
+
+                libro.UsuarioPrestamo = usuario;
+                libro.Prestado += 1;
+
+                ActualizarPrestamos();
+
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario y un libro para registrar el préstamo.");
+            }
+        }
+
 
         private void ActualizarUsuarios()
         {
@@ -137,11 +251,9 @@ namespace DAS_Desafio_1
         {
             dgvPrestamos.Rows.Clear();
 
-            foreach (var libro in libros)
+            foreach (var prestamo in prestamos)
             {
-                string usuarioNombre = libro.UsuarioPrestamo?.FullName ?? "N/A";
-
-                dgvPrestamos.Rows.Add(libro.Titulo, usuarioNombre, libro.FechaPrestamo, libro.FechaDevolucion);
+                dgvPrestamos.Rows.Add(prestamo.TituloLibro, prestamo.NombreUsuario, prestamo.FechaPrestamo.ToShortDateString(), prestamo.FechaDevolucion.ToShortDateString());
             }
         }
 
@@ -175,6 +287,7 @@ namespace DAS_Desafio_1
             dgvPrestamos.Columns.Add("FechaDevolucion", "Fecha de Devolución");
             dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrestamos.AllowUserToAddRows = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -256,6 +369,50 @@ namespace DAS_Desafio_1
             }
         }
 
+        private void dgvPrestamos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvPrestamos.ClearSelection();
+                dgvPrestamos.Rows[e.RowIndex].Selected = true;
+
+                string tituloEditar = dgvPrestamos.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
+                string nombreEditar = dgvPrestamos.Rows[e.RowIndex].Cells["Usuario"].Value.ToString();
+                string fechaPreEditar = dgvPrestamos.Rows[e.RowIndex].Cells["FechaPrestamo"].Value.ToString();
+                string fechaDevEditar = dgvPrestamos.Rows[e.RowIndex].Cells["FechaDevolucion"].Value.ToString();
+
+                var libroEditar = libros.FirstOrDefault(l => l.Titulo == tituloEditar);
+                var usuarioEditar = usuarios.FirstOrDefault(u => u.FullName == nombreEditar);
+
+                var registroEditar = prestamos.FirstOrDefault(p =>
+                p.TituloLibro == tituloEditar &&
+                p.NombreUsuario == nombreEditar &&
+                p.FechaPrestamo.ToShortDateString() == fechaPreEditar &&
+                p.FechaDevolucion.ToShortDateString() == fechaDevEditar
+                );
+
+                if (libroEditar != null && usuarioEditar != null)
+                {
+                    cmbLibro.SelectedItem = libroEditar;
+                    cmbUsuarios.SelectedItem = usuarioEditar;
+                    dtpFechaPrestado.Value = registroEditar.FechaPrestamo;
+                    dtpFechaDevolver.Value = registroEditar.FechaDevolucion;
+
+                    indexPresEditar = prestamos.IndexOf(registroEditar);
+
+                    indexPresEditar = e.RowIndex;
+
+                }
+                else
+                {
+                    MessageBox.Show("Selección inválida.");
+                    indexPresEditar = -1;
+                }
+            }   
+        }
+
+
+
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
@@ -281,6 +438,24 @@ namespace DAS_Desafio_1
             }
         }
 
+        private void btnEditarRegistro_Click(object sender, EventArgs e)
+        {
+            if (indexPresEditar >= 0 && cmbLibro.SelectedItem is clsLibros libro && cmbUsuarios.SelectedItem is clsUsuarios usuario)
+            {
+                prestamos[indexPresEditar].TituloLibro = libro.Titulo;
+                prestamos[indexPresEditar].NombreUsuario = usuario.FullName;
+                prestamos[indexPresEditar].FechaPrestamo = dtpFechaPrestado.Value;
+                prestamos[indexPresEditar].FechaDevolucion = dtpFechaDevolver.Value;
+
+                ActualizarPrestamos();
+                indexPresEditar = -1;
+            }
+            else
+            {
+                MessageBox.Show("Selección inválida.");
+            }
+        }
+
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
             if (dgvUsuarios.SelectedRows.Count > 0)
@@ -297,6 +472,38 @@ namespace DAS_Desafio_1
                 {
                     MessageBox.Show("Seleccione un usuario para eliminar.");
                 }
+            }
+        }
+
+        private void btnEliminarRegistro_Click(object sender, EventArgs e)
+        {
+            if (dgvPrestamos.SelectedRows.Count > 0)
+            {
+                string titulo = dgvPrestamos.SelectedRows[0].Cells["Titulo"].Value.ToString();
+                string usuario = dgvPrestamos.SelectedRows[0].Cells["Usuario"].Value.ToString();
+                string fechaPrestamo = dgvPrestamos.SelectedRows[0].Cells["FechaPrestamo"].Value.ToString();
+                string fechaDevolucion = dgvPrestamos.SelectedRows[0].Cells["FechaDevolucion"].Value.ToString();
+
+                var registroEliminar = prestamos.FirstOrDefault(p =>
+                    p.TituloLibro == titulo &&
+                    p.NombreUsuario == usuario &&
+                    p.FechaPrestamo.ToShortDateString() == fechaPrestamo &&
+                    p.FechaDevolucion.ToShortDateString() == fechaDevolucion
+                );
+
+                if (registroEliminar != null)
+                {
+                    prestamos.Remove(registroEliminar);
+                    ActualizarPrestamos();
+                }
+                else
+                {
+                    MessageBox.Show("Registro inválido");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un registro para eliminar.");
             }
         }
     }
