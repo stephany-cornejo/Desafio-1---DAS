@@ -24,10 +24,7 @@ namespace DAS_Desafio_1
 
         public clsUsuarios(string nom, string correo)
         {
-            FullName = nom;
-            Correo = correo;
-
-            DatosCompletos = false;
+            ValidarDatos(nom, correo);
         }
 
         public bool ValidarDatos(string nom, string correo)
@@ -35,7 +32,7 @@ namespace DAS_Desafio_1
             ultimoError  = string.Empty;
             DatosCompletos = false;
 
-            if (string.IsNullOrWhiteSpace(nom) && string.IsNullOrWhiteSpace(correo))
+            if (string.IsNullOrWhiteSpace(nom) || string.IsNullOrWhiteSpace(correo))
             {
                 ultimoError = "Faltan datos obligatorios";
                 return false;
@@ -54,7 +51,6 @@ namespace DAS_Desafio_1
             dgvUsuarios.Rows.Clear();
             dgvUsuarios.Columns.Clear();
 
-            //dgvUsuarios.Columns.Add("Id", "Id");
             dgvUsuarios.Columns.Add("Nombre", "Nombre");
             dgvUsuarios.Columns.Add("Correo", "Correo");
 

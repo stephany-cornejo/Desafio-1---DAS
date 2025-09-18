@@ -233,5 +233,66 @@ namespace DAS_Desafio_1
                 }
             }
         }
+
+        private void dgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvUsuarios.ClearSelection();
+                dgvUsuarios.Rows[e.RowIndex].Selected = true;
+
+                string nombreEditar = dgvUsuarios.Rows[e.RowIndex].Cells["FullName"].Value.ToString();
+                var usuarioEditar = usuarios.FirstOrDefault(l => l.FullName == nombreEditar);
+                if (usuarioEditar != null)
+                {
+                    txtFullName.Text = usuarioEditar.FullName;
+                    txtCorreo.Text = usuarioEditar.Correo;
+                }
+            }
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+            if (dgvUsuarios.SelectedRows.Count > 0)
+            {
+                string nombreEditar = dgvUsuarios.SelectedRows[0].Cells["FullName"].Value.ToString();
+                var usuarioEditar = usuarios.FirstOrDefault(l => l.FullName == nombreEditar);
+
+                if (usuarioEditar != null)
+                {
+                    if (usuarioEditar.ValidarDatos(txtFullName.Text, txtCorreo.Text))
+                    {
+                        ActualizarUsuarios();
+                    }
+                    else
+                    {
+                        MessageBox.Show(usuarioEditar.UltimoError);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario para editar.");
+            }
+        }
+
+        private void btnEliminarUsuario_Click(object sender, EventArgs e)
+        {
+            if (dgvUsuarios.SelectedRows.Count > 0)
+            {
+                string nombreEliminar = dgvUsuarios.SelectedRows[0].Cells["FullName"].Value.ToString();
+                var usuarioEliminar = usuarios.FirstOrDefault(l => l.FullName == nombreEliminar);
+
+                if (usuarioEliminar != null)
+                {
+                    usuarios.Remove(usuarioEliminar);
+                    ActualizarUsuarios();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un usuario para eliminar.");
+                }
+            }
+        }
     }
 }

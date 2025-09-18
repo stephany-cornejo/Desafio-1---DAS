@@ -267,6 +267,7 @@
             this.btnEliminarUsuario.TabIndex = 4;
             this.btnEliminarUsuario.Text = "Eliminar";
             this.btnEliminarUsuario.UseVisualStyleBackColor = true;
+            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
             // 
             // btnEditarUsuario
             // 
@@ -276,6 +277,7 @@
             this.btnEditarUsuario.TabIndex = 3;
             this.btnEditarUsuario.Text = "Editar";
             this.btnEditarUsuario.UseVisualStyleBackColor = true;
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
             // 
             // btnAñadirUsuario
             // 
