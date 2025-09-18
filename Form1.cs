@@ -31,6 +31,7 @@ namespace DAS_Desafio_1
             ActualizarPrestamos();
             dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
             dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
+            dgvPrestamos.CellDoubleClick += dgvPrestamos_CellDoubleClick;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -286,7 +287,7 @@ namespace DAS_Desafio_1
             dgvPrestamos.Columns.Add("FechaDevolucion", "Fecha de Devolución");
             dgvPrestamos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLibros.AllowUserToAddRows = false;
+            dgvPrestamos.AllowUserToAddRows = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -366,6 +367,33 @@ namespace DAS_Desafio_1
                     txtCorreo.Text = usuarioEditar.Correo;
                 }
             }
+        }
+
+        private void dgvPrestamos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvPrestamos.ClearSelection();
+                dgvPrestamos.Rows[e.RowIndex].Selected = true;
+
+                string tituloEditar = dgvPrestamos.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
+                string nombreEditar = dgvPrestamos.Rows[e.RowIndex].Cells["Usuario"].Value.ToString();
+                string fechaPreEditar = dgvPrestamos.Rows[e.RowIndex].Cells["FechaPrestamo"].Value.ToString();
+                string fechaDevEditar = dgvPrestamos.Rows[e.RowIndex].Cells["FechaDevolucion"].Value.ToString();
+
+                var libroEditar = libros.FirstOrDefault(l => l.Titulo == tituloEditar);
+                var usuarioEditar = usuarios.FirstOrDefault(u => u.FullName == nombreEditar);
+            
+                if (libroEditar != null && usuarioEditar != null)
+                {
+                    cmbLibro.SelectedItem = libroEditar;
+                    cmbUsuarios.SelectedItem = usuarioEditar;
+                }
+                else
+                {
+                    MessageBox.Show("Selección inválida.");
+                }
+            }   
         }
 
 
