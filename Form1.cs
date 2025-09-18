@@ -84,8 +84,18 @@ namespace DAS_Desafio_1
         private void CargarUsuariosIniciales()
         {
             usuarios.Add(new clsUsuarios("Ana García", "anagarcia78@gmail.com"));
-           
-
+            usuarios.Add(new clsUsuarios("Antonio Barrientos", "barrientos99@gmail.com"));
+            usuarios.Add(new clsUsuarios("Miguel Anaya", "anaya.miguel@hotmail.com"));
+            usuarios.Add(new clsUsuarios("Marcos Cortejo", "cor-mar238@gmail.com"));
+            usuarios.Add(new clsUsuarios("Maribel Guardado", "mariguardado@gmail.com"));
+            usuarios.Add(new clsUsuarios("Lisbeth Argueta", "liss34@gmail.com"));
+            usuarios.Add(new clsUsuarios("Lily Acosta", "lilies09@hotmail.com"));
+            usuarios.Add(new clsUsuarios("Ana Castro", "castro32@gmail.com"));
+            usuarios.Add(new clsUsuarios("Bryan Castillo", "castillo27@gmail.com"));
+            usuarios.Add(new clsUsuarios("Jose Bonilla", "josee36bonilla@gmail.com"));
+            usuarios.Add(new clsUsuarios("Kimberly Chacón", "chaconchacon@gmail.com"));
+            usuarios.Add(new clsUsuarios("Katerin Gonzalez", "rosesarered@gmail.com"));
+            usuarios.Add(new clsUsuarios("Kevin Trujillo", "trujillo3kevin@gmail.com"));
         }
 
         private void ActualizarUsuarios()
